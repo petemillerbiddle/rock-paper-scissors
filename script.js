@@ -6,7 +6,7 @@ let computerScore = 0;
 
 function computerPlay() {
     let moveIndex = Math.floor(3 * Math.random());
-    console.log("computer move is " + moveIndex);
+    console.log("computer move is " + moves[moveIndex]);
     return moveIndex;
 }
 
@@ -36,7 +36,7 @@ function playRound(playerSelection, computerSelection) { //params are indices
 
 function game() {
     for (let i = 0; i < 5; i++) {
-        playerSelection = "scissors";
+        playerSelection = prompt("your play? ");
         computerSelection = computerPlay();
         playRound(moves.indexOf(playerSelection), computerSelection);        
     }
