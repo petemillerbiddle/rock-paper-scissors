@@ -12,30 +12,25 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) { //params are indices
     //TODO, return string declaring winner
+    //TODO, check winner by comparing relative position in moves array
+    //make hard mode toggle button where computer always wins
+    //easy mode where player always wins
     if (playerSelection === computerSelection) {
         console.log("tie! both chose " + moves[playerSelection]);
         return "tie!";
-    } else if (playerSelection === 0 && computerSelection === 2) {
-        console.log("player beats computer with " + moves[playerSelection] + " over " + moves[computerSelection]);
-        playerScore++;
-        return "player wins";
-    } else if (playerSelection === 2 && computerSelection === 0) {
-        console.log("computer beats player with " + moves[computerSelection] + " over " + moves[playerSelection]);
-        computerScore++;
-        return "computer wins";
-    } else if (playerSelection > computerSelection) {
-        console.log("player beats computer with " + moves[playerSelection] + " over " + moves[computerSelection]);
+    } else if (playerSelection ===  (computerSelection + 1) % 3) {
+        console.log("X player beats computer with " + moves[playerSelection] + " over " + moves[computerSelection]);
         playerScore++;
         return "player wins";
     } else {
-        console.log("computer beats player with " + moves[computerSelection] + " over " + moves[playerSelection]);
+        console.log("O computer beats player with " + moves[computerSelection] + " over " + moves[playerSelection]);
         computerScore++;
         return "computer wins";
     }
 }
 
 function game() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
         playerSelection = prompt("your play? ");
         computerSelection = computerPlay();
         playRound(moves.indexOf(playerSelection), computerSelection);        
