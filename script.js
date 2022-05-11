@@ -5,14 +5,11 @@ let playerScore = 0;
 let computerScore = 0;
 
 function computerPlay() {
-    let moveIndex = Math.floor(3 * Math.random());
-    console.log("computer move is " + moves[moveIndex]);
-    return moveIndex;
+    return Math.floor(3 * Math.random());
 }
 
 function playRound(playerSelection, computerSelection) { //params are indices
     //TODO, return string declaring winner
-    //TODO, check winner by comparing relative position in moves array
     //make hard mode toggle button where computer always wins
     //easy mode where player always wins
     if (playerSelection === computerSelection) {
