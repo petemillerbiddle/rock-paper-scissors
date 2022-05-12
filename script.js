@@ -8,6 +8,11 @@ function computerPlay() {
     return Math.floor(3 * Math.random());
 }
 
+function resetScores() {
+    playerScore = 0;
+    computerScore = 0;
+}
+
 function playRound(playerSelection, computerSelection) { //params are indices
     //TODO, return string declaring winner
     //make hard mode toggle button where computer always wins
@@ -23,13 +28,11 @@ function playRound(playerSelection, computerSelection) { //params are indices
     }
     if (playerScore >= 3) {
         console.log("player wins round");
-        playerScore = 0;
-        computerScore = 0;
+        resetScores();
     }
     else if (computerScore >= 3) {
         console.log("computer wins round");
-        playerScore = 0;
-        computerScore = 0;
+        resetScores();
     }
 }
 
