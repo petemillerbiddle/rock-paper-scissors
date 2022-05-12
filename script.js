@@ -4,6 +4,12 @@ let computerSelection;
 let playerScore = 0;
 let computerScore = 0;
 
+const container = document.querySelector('#container');
+const results = document.createElement('div');
+results.classList.add('results');
+container.appendChild(results);
+
+
 function computerPlay() {
     return Math.floor(3 * Math.random());
 }
@@ -19,20 +25,23 @@ function playRound(playerSelection, computerSelection) { //params are indices
     //easy mode where player always wins
     if (playerSelection === computerSelection) {
         console.log("tie! both chose " + moves[playerSelection]);
+        return 'tie!';
     } else if (playerSelection ===  (computerSelection + 1) % 3) {
         console.log("X player beats computer with " + moves[playerSelection] + " over " + moves[computerSelection]);
         playerScore++;
+        if (playerScore >= 3) {
+            console.log("player wins round");
+            resetScores();
+        }
+        return 'player wins!';
     } else {
         console.log("O computer beats player with " + moves[computerSelection] + " over " + moves[playerSelection]);
         computerScore++;
-    }
-    if (playerScore >= 3) {
-        console.log("player wins round");
-        resetScores();
-    }
-    else if (computerScore >= 3) {
-        console.log("computer wins round");
-        resetScores();
+        if (computerScore >= 3) {
+            console.log("computer wins round");
+            resetScores();
+        }
+        return 'computer wins!'
     }
 }
 
@@ -40,7 +49,7 @@ function playRound(playerSelection, computerSelection) { //params are indices
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        playRound(moves.indexOf(button.id), computerPlay());
+        results.textContent = playRound(moves.indexOf(button.id), computerPlay());
     });
 });
 
