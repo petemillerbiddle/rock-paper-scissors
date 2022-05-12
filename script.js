@@ -45,7 +45,6 @@ function playRound(playerSelection, computerSelection) { //params are indices
     }
 }
 
-
 const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
