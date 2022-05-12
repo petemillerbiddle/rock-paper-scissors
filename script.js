@@ -12,7 +12,6 @@ function playRound(playerSelection, computerSelection) { //params are indices
     //TODO, return string declaring winner
     //make hard mode toggle button where computer always wins
     //easy mode where player always wins
-    console.log("player played rock");
     if (playerSelection === computerSelection) {
         console.log("tie! both chose " + moves[playerSelection]);
         return "tie!";
@@ -32,6 +31,7 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         console.log(button.id + " was clicked");
+        playRound(moves.indexOf(button.id), computerPlay());
     });
 });
 
