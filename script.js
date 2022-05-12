@@ -30,16 +30,16 @@ function playRound(playerSelection, computerSelection) { //params are indices
         console.log("X player beats computer with " + moves[playerSelection] + " over " + moves[computerSelection]);
         playerScore++;
         if (playerScore >= 3) {
-            console.log("player wins round");
             resetScores();
+            return "player wins round";
         }
         return 'player wins!';
     } else {
         console.log("O computer beats player with " + moves[computerSelection] + " over " + moves[playerSelection]);
         computerScore++;
         if (computerScore >= 3) {
-            console.log("computer wins round");
             resetScores();
+            return "computer wins round";
         }
         return 'computer wins!'
     }
