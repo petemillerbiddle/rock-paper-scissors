@@ -7,7 +7,17 @@ let computerScore = 0;
 const container = document.querySelector('#container');
 const results = document.createElement('div');
 results.classList.add('results');
+
+const playerScoreDOM = document.createElement('div');
+playerScoreDOM.classList.add('player-score');
+
+const computerScoreDOM = document.createElement('div');
+computerScoreDOM.classList.add('player-score');
+
+
+container.appendChild(playerScoreDOM);
 container.appendChild(results);
+container.appendChild(computerScoreDOM);
 
 
 function computerPlay() {
@@ -49,6 +59,9 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         results.textContent = playRound(moves.indexOf(button.id), computerPlay());
+        playerScoreDOM.textContent = "player has " + playerScore + " points";
+        computerScoreDOM.textContent = "computer has " + computerScore + " points";
+
     });
 });
 
